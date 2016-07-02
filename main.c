@@ -230,7 +230,7 @@ uint32_t I2C_read(uint8_t mainAddr, uint16_t ReadAddr, uint8_t* pBuffer)
   return sEE_OK;  
 }
 
-void init_BD3490(uint8_t volumn){
+void init_BD3490(uint8_t volume){
 	#ifdef DEBUG
 		LCD1602_printl(0,0,"Initing BD3490  ");
 		LCD1602_printl(0,1,"                ");
@@ -239,8 +239,8 @@ void init_BD3490(uint8_t volumn){
 		I2C_write(0x80, 0xfe, 0x81); //Restart BD3490
 		I2C_write(0x80, 0x04, 0x00); //Select input from Channel A
 		I2C_write(0x80, 0x06, 0x00); //Set input gain to min
-		I2C_write(0x80, 0x21, volumn); //Set volumn to 0db
-		I2C_write(0x80, 0x22, volumn); //Set volumn to 0db
+		I2C_write(0x80, 0x21, volume); //Set volume to 0db
+		I2C_write(0x80, 0x22, volume); //Set volume to 0db
 	#ifdef DEBUG
 		LCD1602_printl(9,1,"done");
 	#endif
