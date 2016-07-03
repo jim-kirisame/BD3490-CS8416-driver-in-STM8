@@ -247,19 +247,19 @@ void init_BD3490(uint8_t volume){
 }
 void init_cs8416(void){
 	I2C_write(0x20,0x00,0x08);      //// more wideband jitter, less inband
-	I2C_write(0x20,0x01,0x80);      //// INT active high, zero SDOUT on Rx error, RMCK=128Fs
-	I2C_write(0x20,0x02,0x00);      //// automatic de-emphasis enabled
+	I2C_write(0x20,0x01,0x00);      //// RMCK=256Fs
+	I2C_write(0x20,0x02,0x00);      //// automatic de-emphasis disabled
 
 	I2C_write(0x20,0x03,0xc0);        // GPO1 = VCC output
 	I2C_write(0x20,0x04,0x38);        // RUN=0, optical selected,channel=7
 	
-	I2C_write(0x20,0x05,0xc5);      //// LJ master mode; SOJUST=0, SODEL=0, SOSPOL=0, SOLRPOL=0
-	I2C_write(0x20,0x06,0x10);      //// UNLOCK unmasked in RERR register
+	I2C_write(0x20,0x05,0x85);      //// master mode; 64fs; I2S mode;
+	//I2C_write(0x20,0x06,0x10);      //// UNLOCK unmasked in RERR register
 	
-	I2C_write(0x20,0x07,0x04);        // RERR register unmasked for interrupt
-	I2C_write(0x20,0x08,0x7F);        // all interrupts level-active
-	I2C_write(0x20,0x09,0x00);        // all interrupts level-active
-	I2C_write(0x20,0x04,0xb8);        // RUN=1 / optical
+	//I2C_write(0x20,0x07,0x04);        // RERR register unmasked for interrupt
+	//I2C_write(0x20,0x08,0x7F);        // all interrupts level-active
+	//I2C_write(0x20,0x09,0x00);        // all interrupts level-active
+	I2C_write(0x20,0x04,0xB8);        // RUN=1 / optical
 }
 main()
 {
